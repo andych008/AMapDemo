@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AMapDemo</string>
+    <string name="amap_regeocode_failed">逆地理编码查询失败</string>
+    <string name="amap_undefined">未知错误</string>
+    <string name="amap_gps_unopend">定位失败，由于设备 GPS 未开启或当前 GPS 信号差。</string>
+    <string name="amap_no_lbs_permission">缺少定位权限</string>
+</resources>

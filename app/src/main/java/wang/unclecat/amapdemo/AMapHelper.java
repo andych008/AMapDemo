@@ -35,6 +35,22 @@ public class AMapHelper {
      * @return
      */
     public static boolean checkPermission(Activity activity, int requestCode) {
+        String[] permissions = new String[]{LBS_PERMISSIONS[0], LBS_PERMISSIONS[1]};
+
+        if (checkSelfPermissions(activity, permissions)) {
+            return true;
+        } else {
+            ActivityCompat.requestPermissions(activity, permissions, requestCode);
+            return false;
+        }
+    }
+
+    /**
+     * Android 10及以上需要单独申请后台定位权限
+     *
+     * https://developer.android.google.cn/training/location/receive-location-updates
+     */
+    public static boolean checkPermissionWithBackground(Activity activity, int requestCode) {
         //28：Android 9.0 P
         String[] permissions = Build.VERSION.SDK_INT <= Build.VERSION_CODES.P ? new String[]{LBS_PERMISSIONS[0], LBS_PERMISSIONS[1]} : LBS_PERMISSIONS;
 

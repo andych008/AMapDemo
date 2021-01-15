@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat;
 
 import com.amap.api.location.AMapLocation;
 
+import java.util.Arrays;
+
 /**
  * 高德定位帮助类
  * <p>
@@ -63,12 +65,11 @@ public class AMapHelper {
     }
 
     private static boolean checkSelfPermissions(Context context, String... permissions) {
-        for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                return false;
-            }
-        }
-        return true;
+
+        boolean notGranted = Arrays.stream(permissions)
+                .anyMatch(permission -> ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED);
+
+        return !notGranted;
     }
 
     /**
